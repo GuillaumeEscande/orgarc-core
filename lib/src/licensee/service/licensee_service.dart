@@ -1,3 +1,4 @@
+import 'package:orgarc_core/src/licensee/exceptions/licensee_not_found_exception.dart';
 import 'package:orgarc_core/src/licensee/interfaces/licensee_storage.dart';
 import 'package:orgarc_core/src/licensee/model/licensee.dart';
 import 'package:orgarc_core/src/licensee/service/reader/licensee_reader.dart';
@@ -49,5 +50,19 @@ class LicenseeService {
       return true;
     }
     return false;
+  }
+
+  Licensee getLicenseeByLicenceNumber(String licenceNumber) {
+    List<Licensee> licensees = _storage.getAllLicensees();
+
+    var lowerLicenceNumber = licenceNumber.toLowerCase();
+
+    for (var licensee in licensees) {
+      if (licensee.licenceNumber.toLowerCase().compareTo(lowerLicenceNumber) ==
+          0) {
+        return licensee;
+      }
+    }
+    throw LicenseeNotFoundException(" licenceNumber = $licenceNumber");
   }
 }

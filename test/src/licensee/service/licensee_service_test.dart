@@ -1,3 +1,4 @@
+import 'package:orgarc_core/src/licensee/exceptions/licensee_not_found_exception.dart';
 import 'package:orgarc_core/src/licensee/interfaces/licensee_storage.dart';
 import 'package:orgarc_core/src/licensee/model/club.dart';
 import 'package:orgarc_core/src/licensee/model/licensee.dart';
@@ -74,6 +75,34 @@ void main() {
     test('Search licensees by substring of lastname', () {
       List<Licensee> results = service.getLicenseeBySearch("ul");
       expect(results, equals([paul]));
+    });
+  });
+  group('Tests of getLicenseeByLicenceNumber method ', () {
+    LicenseeStorage storage = LicenseeStorageInMemory();
+    LicenseeService service = LicenseeService(storage);
+    Licensee paul =
+        Licensee("1234", "Paul", "CoolName", "M", "SHCL", Club("club", 0));
+    Licensee george =
+        Licensee("5679", "George", "Buddy", "M", "SHCL", Club("club", 0));
+    Licensee rick =
+        Licensee("3456", "Rick", "NameSpace", "M", "SHCL", Club("club", 0));
+    List<Licensee> licensees = [
+      paul,
+      george,
+      rick,
+    ];
+
+    setUp(() {
+      service.readLicensee(LicenseeReaderDefault(licensees));
+    });
+
+    test('Search existing licensee', () {
+      Licensee result = service.getLicenseeByLicenceNumber("1234");
+      expect(result, equals(paul));
+    });
+    test('Search not existing licensee', () {
+      expect(() => service.getLicenseeByLicenceNumber("00"),
+          throwsA(TypeMatcher<LicenseeNotFoundException>()));
     });
   });
 }

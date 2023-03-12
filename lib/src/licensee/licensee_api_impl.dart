@@ -21,4 +21,9 @@ class LicenseeApiImpl implements LicenseeApi {
   List<Licensee> getLicenseeBySearch(String searchRegexp) {
     return _service.getLicenseeBySearch(searchRegexp);
   }
+
+  @override
+  Licensee getLicenseeByLicenceNumber(String licenceNumber) {
+    return _service.getLicenseeByLicenceNumber(licenceNumber);
+  }
 }
