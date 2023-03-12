@@ -1,4 +1,4 @@
-import 'package:orgarc_core/src/Target/model/targetPlan.dart';
+import 'package:orgarc_core/src/target/model/target_plan.dart';
 
 class Departure {
   TargetPlan targetPlan;

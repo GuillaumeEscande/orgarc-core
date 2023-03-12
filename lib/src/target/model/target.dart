@@ -1,4 +1,4 @@
-import 'coatOfArm.dart';
+import 'coat_of_arm.dart';
 
 class Target {
   final int id;

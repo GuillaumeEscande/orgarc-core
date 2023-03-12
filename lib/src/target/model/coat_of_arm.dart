@@ -1,4 +1,4 @@
-import 'archeryType.dart';
+import 'archery_type.dart';
 
 class CoatOfArm {
   final int size;

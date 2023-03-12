@@ -12,5 +12,8 @@ void main() {
     test('First Test', () {
       expect(awesome.isAwesome, isTrue);
     });
+    test('First Test', () {
+      expect(awesome.isAwesome, isTrue);
+    });
   });
 }
