@@ -17,7 +17,7 @@ void main() {
       List<Licensee> licensees = [];
       service.readLicensee(LicenseeReaderDefault(licensees));
 
-      List<Licensee> results = service.getLicenseeBySearch("");
+      List<Licensee> results = service.searchLicenseeByText("");
       expect(results, equals(licensees));
     });
   });
@@ -42,38 +42,38 @@ void main() {
     });
 
     test('Search licensees without text', () {
-      List<Licensee> results = service.getLicenseeBySearch("");
+      List<Licensee> results = service.searchLicenseeByText("");
       expect(results, equals(licensees));
     });
 
     test('Search licensees without text', () {
-      List<Licensee> results = service.getLicenseeBySearch("");
+      List<Licensee> results = service.searchLicenseeByText("");
       expect(results, equals(licensees));
     });
     test('Search licensees by exact firstname', () {
-      List<Licensee> results = service.getLicenseeBySearch(george.firstname);
+      List<Licensee> results = service.searchLicenseeByText(george.firstname);
       expect(results, equals([george]));
     });
     test('Search licensees by firstname, without upper letter', () {
       List<Licensee> results =
-          service.getLicenseeBySearch(george.firstname.toLowerCase());
+          service.searchLicenseeByText(george.firstname.toLowerCase());
       expect(results, equals([george]));
     });
     test('Search licensees by substring of firstname', () {
-      List<Licensee> results = service.getLicenseeBySearch("name");
+      List<Licensee> results = service.searchLicenseeByText("name");
       expect(results, equals([paul, rick]));
     });
     test('Search licensees by exact lastname', () {
-      List<Licensee> results = service.getLicenseeBySearch(george.lastname);
+      List<Licensee> results = service.searchLicenseeByText(george.lastname);
       expect(results, equals([george]));
     });
     test('Search licensees by lastname, without upper letter', () {
       List<Licensee> results =
-          service.getLicenseeBySearch(george.lastname.toLowerCase());
+          service.searchLicenseeByText(george.lastname.toLowerCase());
       expect(results, equals([george]));
     });
     test('Search licensees by substring of lastname', () {
-      List<Licensee> results = service.getLicenseeBySearch("ul");
+      List<Licensee> results = service.searchLicenseeByText("ul");
       expect(results, equals([paul]));
     });
   });

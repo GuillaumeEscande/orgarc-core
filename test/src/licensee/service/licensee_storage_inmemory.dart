@@ -3,7 +3,7 @@ import 'package:orgarc_core/src/licensee/model/licensee.dart';
 
 class LicenseeStorageInMemory implements LicenseeStorage {
   List<Licensee> _licensees;
-  LicenseeStorageInMemory() : _licensees = List.empty();
+  LicenseeStorageInMemory() : _licensees = List.empty(growable: true);
 
   @override
   List<Licensee> getAllLicensees() {
@@ -12,6 +12,6 @@ class LicenseeStorageInMemory implements LicenseeStorage {
 
   @override
   void saveAllLicensees(List<Licensee> licenseees) {
-    this._licensees = licenseees;
+    _licensees = licenseees;
   }
 }

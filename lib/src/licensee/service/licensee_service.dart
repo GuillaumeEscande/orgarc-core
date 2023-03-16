@@ -13,7 +13,7 @@ class LicenseeService {
     _storage.saveAllLicensees(licensees);
   }
 
-  List<Licensee> getLicenseeBySearch(String searchCriteria) {
+  List<Licensee> searchLicenseeByText(String searchCriteria) {
     List<Licensee> licensees = _storage.getAllLicensees();
 
     List<Licensee> result = [];
