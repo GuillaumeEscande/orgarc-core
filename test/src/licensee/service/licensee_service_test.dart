@@ -1,12 +1,12 @@
 import 'package:orgarc_core/src/licensee/exceptions/licensee_not_found_exception.dart';
+import 'package:orgarc_core/src/licensee/impl/licensee_storage_inmemory.dart';
 import 'package:orgarc_core/src/licensee/interfaces/licensee_storage.dart';
 import 'package:orgarc_core/src/licensee/model/club.dart';
 import 'package:orgarc_core/src/licensee/model/licensee.dart';
 import 'package:orgarc_core/src/licensee/service/licensee_service.dart';
 import 'package:test/test.dart';
 
-import 'licensee_storage_inmemory.dart';
-import 'reader/licensee_reader_default.dart';
+import 'reader/licensee_reader_in_memory.dart';
 
 void main() {
   group('Tests of readLicensee method ', () {
@@ -15,7 +15,7 @@ void main() {
       LicenseeService service = LicenseeService(storage);
 
       List<Licensee> licensees = [];
-      service.readLicensee(LicenseeReaderDefault(licensees));
+      service.readLicensee(LicenseeReaderInMemory(licensees));
 
       List<Licensee> results = service.searchLicenseeByText("");
       expect(results, equals(licensees));
@@ -38,7 +38,7 @@ void main() {
     ];
 
     setUp(() {
-      service.readLicensee(LicenseeReaderDefault(licensees));
+      service.readLicensee(LicenseeReaderInMemory(licensees));
     });
 
     test('Search licensees without text', () {
@@ -93,7 +93,7 @@ void main() {
     ];
 
     setUp(() {
-      service.readLicensee(LicenseeReaderDefault(licensees));
+      service.readLicensee(LicenseeReaderInMemory(licensees));
     });
 
     test('Search existing licensee', () {

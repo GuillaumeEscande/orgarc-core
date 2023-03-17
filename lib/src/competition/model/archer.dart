@@ -1,6 +1,6 @@
 class Archer {
   final String licenceNumber;
-  final String category;
+  String category;
 
   Archer(this.licenceNumber, this.category);
 }

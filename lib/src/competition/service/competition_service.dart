@@ -9,18 +9,20 @@ class CompetitionService {
   CompetitionService(this._storage);
 
   List<Competition> getAllCompetitions() {
-    return List.empty();
+    return _storage.getAll();
   }
 
   Competition getCompetitionById(String id) {
-    return Competition(id, "null");
+    return _storage.getById(id);
+  }
+
+  void updateCompetition(Competition competition) {
+    _storage.save([competition]);
   }
 
   Competition createCompetition(String name) {
     return Competition(_generateId(), name);
   }
-
-  void updateCompetition(Competition competition) {}
 
   static String _generateId() {
     Random random = Random(DateTime.now().millisecond);

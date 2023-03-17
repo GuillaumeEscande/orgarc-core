@@ -1,3 +1,4 @@
+import 'package:orgarc_core/src/competition/exceptions/competition_not_found_exception.dart';
 import 'package:orgarc_core/src/competition/interfaces/competition_storage.dart';
 import 'package:orgarc_core/src/competition/model/competition.dart';
 
@@ -12,7 +13,10 @@ class CompetitionStorageInMemory implements CompetitionStorage {
 
   @override
   Competition getById(String id) {
-    return __competitions.firstWhere((element) => element.id == id);
+    return __competitions.firstWhere(
+      (element) => element.id == id,
+      orElse: () => throw CompetitionNotFoundException(id),
+    );
   }
 
   @override

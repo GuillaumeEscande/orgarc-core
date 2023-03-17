@@ -3,18 +3,16 @@ import 'package:orgarc_core/src/licensee/interfaces/licensee_storage.dart';
 import 'package:orgarc_core/src/licensee/model/licensee.dart';
 import 'package:orgarc_core/src/licensee/service/licensee_service.dart';
 import 'package:orgarc_core/src/licensee/service/reader/licensee_reader.dart';
-import 'package:orgarc_core/src/licensee/service/reader/resultarc_reader.dart';
 
 class LicenseeApiImpl implements LicenseeApi {
   final LicenseeService _service;
+  final LicenseeReader _reader;
 
-  LicenseeApiImpl(LicenseeStorage storage)
-      : _service = LicenseeService(storage);
+  LicenseeApiImpl(this._service, this._reader);
 
   @override
-  void loadResultArcLicensee(String resultArcPath) {
-    LicenseeReader reader = ResultArcReader(resultArcPath);
-    _service.readLicensee(reader);
+  void retrieveLicensee() {
+    _service.readLicensee(_reader);
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:orgarc_core/src/licensee/model/licensee.dart';
 
 abstract class LicenseeApi {
-  void loadResultArcLicensee(String resultArcPath);
+  void retrieveLicensee();
   List<Licensee> searchLicenseeByText(String searchRegexp);
   Licensee getLicenseeByLicenceNumber(String licenceNumber);
 }
