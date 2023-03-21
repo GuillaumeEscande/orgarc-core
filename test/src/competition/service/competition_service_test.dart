@@ -60,11 +60,13 @@ void main() {
       expect(comp.id, isNotEmpty);
     });
 
-    test('Test updateCompetition erone', () {
+    test('Test updateCompetition', () {
       Competition comp = service.getCompetitionById("comp_id_1");
-      expect(comp.name, equals("comp1"));
-      comp.name = "new name";
-      service.updateCompetition(comp);
+      expect(comp, comp1);
+      Competition newComp = comp.copyWith(nameIn: "new name");
+      expect(newComp.id, comp1.id);
+      expect(newComp.name, equals("new name"));
+      service.updateCompetition(newComp);
       expect(service.getCompetitionById("comp_id_1").name, equals("new name"));
     });
   });

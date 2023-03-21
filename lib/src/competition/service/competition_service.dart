@@ -17,6 +17,7 @@ class CompetitionService {
   }
 
   void updateCompetition(Competition competition) {
+    _storage.delete([competition]);
     _storage.save([competition]);
   }
 
@@ -44,5 +45,9 @@ class CompetitionService {
     final StringBuffer buffer = StringBuffer();
     buffer.writeAll(uuid);
     return buffer.toString();
+  }
+
+  void deleteCompetition(Competition competition) {
+    _storage.delete([competition]);
   }
 }

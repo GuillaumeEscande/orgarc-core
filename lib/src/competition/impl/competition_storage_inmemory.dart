@@ -21,6 +21,17 @@ class CompetitionStorageInMemory implements CompetitionStorage {
 
   @override
   void save(List<Competition> competitions) {
-    __competitions.addAll(competitions);
+    for (var competition in competitions) {
+      if (!__competitions.contains(competition)) {
+        __competitions.add(competition);
+      }
+    }
+  }
+
+  @override
+  void delete(List<Competition> competitions) {
+    for (var competition in competitions) {
+      __competitions.remove(competition);
+    }
   }
 }

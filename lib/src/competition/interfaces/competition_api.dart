@@ -5,4 +5,5 @@ abstract class CompetitionApi {
   Competition getCompetitionById(String id);
   Competition createCompetition(String name);
   void updateCompetition(Competition competition);
+  void deleteCompetition(Competition competition);
 }

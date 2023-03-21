@@ -28,4 +28,9 @@ class CompetitionApiImpl implements CompetitionApi {
   void updateCompetition(Competition competition) {
     _service.updateCompetition(competition);
   }
+
+  @override
+  void deleteCompetition(Competition competition) {
+    _service.deleteCompetition(competition);
+  }
 }
